@@ -10,7 +10,7 @@ import java.util.List;
  * SQL Practice Runner
  *
  * Usage:
- *   SqlRunner.run("sql/leetcode/q175_combine_two_tables.sql")
+ *   SqlRunner.run("sql/topics/topic.sql")
  *   SqlRunner.runTopic("window_functions")
  *
  * Database modes (switch in DbConfig):
@@ -20,9 +20,7 @@ import java.util.List;
 public class SqlRunner {
 
     public static void main(String[] args) throws Exception {
-        // ── Change this to the file you want to run ──────────────────────
         String sqlFile = "sql/topics/pivot_functions/practice-1.sql";
-        // ─────────────────────────────────────────────────────────────────
 
         try (Connection conn = DbConfig.getConnection()) {
             System.out.println("Connected: " + DbConfig.describe());
@@ -32,18 +30,15 @@ public class SqlRunner {
         }
     }
 
-    /** Run a single .sql file. Splits on semicolons, runs each statement. */
+
     public static void runFile(Connection conn, String filePath) throws Exception {
         String content = Files.readString(Path.of(filePath));
-
-        // Strip single-line comments for splitting, but keep them in printed output
         String[] statements = content.split(";");
 
         for (String raw : statements) {
             String stmt = raw.strip();
             if (stmt.isEmpty()) continue;
 
-            // Print the statement (with its comments)
             System.out.println("\n>> " + firstNonComment(stmt));
 
             try (Statement s = conn.createStatement()) {
@@ -59,7 +54,6 @@ public class SqlRunner {
         }
     }
 
-    /** Print a ResultSet as an ASCII table */
     public static void printResultSet(ResultSet rs) throws SQLException {
         ResultSetMetaData meta = rs.getMetaData();
         int cols = meta.getColumnCount();
@@ -84,14 +78,12 @@ public class SqlRunner {
             return;
         }
 
-        // Column widths
         int[] widths = new int[cols];
         for (int i = 0; i < cols; i++) widths[i] = headers.get(i).length();
         for (List<String> row : rows)
             for (int i = 0; i < cols; i++)
                 widths[i] = Math.max(widths[i], row.get(i).length());
 
-        // Print table
         String sep = buildSep(widths);
         System.out.println(sep);
         System.out.println(buildRow(headers, widths));

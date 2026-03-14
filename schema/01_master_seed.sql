@@ -1,7 +1,3 @@
--- ============================================================
--- Master Schema + Seed Data
--- Run this first to set up all common LeetCode SQL tables.
--- ============================================================
 
 -- ─── Employees / Departments ─────────────────────────────────
 

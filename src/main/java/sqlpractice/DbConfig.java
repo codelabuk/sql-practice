@@ -19,7 +19,7 @@ public class DbConfig {
     private static final Mode MODE = Mode.H2;
     // ─────────────────────────────────────────────────────────────────────
 
-    // H2: in-memory, MySQL compatibility mode (closer to LeetCode)
+    // H2: in-memory, MySQL compatibility mode
     private static final String H2_URL  = "jdbc:h2:mem:practice;MODE=MySQL;DB_CLOSE_DELAY=-1";
     private static final String H2_USER = "sa";
     private static final String H2_PASS = "";
