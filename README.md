@@ -24,7 +24,7 @@ Open `src/main/java/sqlpractice/DbConfig.java` and set `MODE`:
 Open `SqlRunner.java`, change the `sqlFile` path at the top of `main()`, then run it.
 
 ```java
-String sqlFile = "sql/leetcode/problem.sql";
+String sqlFile = "sql/leetcodes/problem.sql";
 ```
 
 Each `.sql` file is self-contained: it creates its own tables, seeds data, and runs the solution.
