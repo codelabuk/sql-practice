@@ -20,7 +20,7 @@ import java.util.List;
 public class SqlRunner {
 
     public static void main(String[] args) throws Exception {
-        String sqlFile = "sql/leetcodes/problem-602.sql";
+        String sqlFile = "sql/topics/rank_functions/problem-1.sql";
 
         try (Connection conn = DbConfig.getConnection()) {
             System.out.println("Connected: " + DbConfig.describe());
